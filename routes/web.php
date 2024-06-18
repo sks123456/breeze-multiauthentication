@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 
-Route::get('/',[HomeController::class,'homepage']);
+
+Route::get('/', [HomeController::class, 'homepage']);
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified', 'normal'])
@@ -23,3 +24,10 @@ Route::view('profile', 'profile')
 
 Route::get('home', [HomeController::class, 'index']);
 require __DIR__ . '/auth.php';
+
+use Illuminate\Support\Facades\Auth;
+
+Route::post('/logout', function () {
+    Auth::logout();
+    return redirect('/');
+})->name('logout');
