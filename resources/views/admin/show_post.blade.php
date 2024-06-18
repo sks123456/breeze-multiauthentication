@@ -79,7 +79,7 @@
                     <a href="{{url('delete_post',$post->id)}}" class="btn btn-danger" onclick="confirmation(event)">Delete</a>
                 </td>
                 <td>
-                    <a href="{{url('update_post',$post->id)}}" class="btn btn-danger" onclick="confirmation(event)">Delete</a>
+                    <a href="{{url('edit_page',$post->id)}}" class="btn btn-success">Update</a>
                 </td>
             </tr>
             @endforeach
