@@ -1,23 +1,25 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
-Route::view('/', 'welcome');
+Route::get('/',[HomeController::class,'homepage']);
 
 Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified','normal'])
+    ->middleware(['auth', 'verified', 'normal'])
     ->name('dashboard');
 
-    Route::view('admin', 'admin')
-    ->middleware(['auth', 'verified','admin'])
+Route::view('admin', 'admin')
+    ->middleware(['auth', 'verified', 'admin'])
     ->name('admin');
 
-    Route::view('superadmin', 'superadmin')
-    ->middleware(['auth', 'verified','superadmin'])
+Route::view('superadmin', 'superadmin')
+    ->middleware(['auth', 'verified', 'superadmin'])
     ->name('superadmin');
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
-require __DIR__.'/auth.php';
+Route::get('home', [HomeController::class, 'index']);
+require __DIR__ . '/auth.php';
